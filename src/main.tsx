@@ -2,6 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { AppRoutes } from './routes'
 import 'antd/dist/reset.css'
+import './main.less'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
