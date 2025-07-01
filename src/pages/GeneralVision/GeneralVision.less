@@ -1,0 +1,38 @@
+.container-cards {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  &__budget {
+    height: 25vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 24px 0 rgba(22, 127, 130, 0.3);
+    &--title {
+      font-size: 1.5rem;
+      text-align: center;
+      font-weight: bold;
+      margin: 1rem;
+      color: #167f82;
+    }
+
+    &--value {
+      font-size: 1.8rem;
+      color: #167f82;
+      font-weight: 600;
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-around;
+      margin: 0 1rem;
+      button {
+        border-radius: 5px;
+        width: 25vh;
+        padding: 1.5rem;
+      }
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import HeaderSingIn from './HeaderSignIn/HeaderSignIn'
+import HeaderSingIn from '../Header/HeaderSignIn/HeaderSignIn/HeaderSignIn'
 import BodySignIn from './BodySignIn/BodySignIn'
 import './SignIn.less'
 
