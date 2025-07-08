@@ -10,6 +10,9 @@ import {
 } from '@ant-design/icons'
 import Sider from 'antd/es/layout/Sider'
 import GeneralVision from './GeneralVision/GeneralVision'
+import AccountsPayable from './AccountsPayable/AccountsPayable'
+import AccountsReceivable from './AccountsReceivable/AccountsReceivable'
+import Transactions from './Transactions/Transactions'
 
 function Home() {
   const [selectedKeys, setSelectedKeys] = useState(['1'])
@@ -25,6 +28,21 @@ function Home() {
     }
     fetchData()
   }, [])
+
+  const renderContent = () => {
+    switch (selectedKeys[0]) {
+      case '1':
+        return <GeneralVision />
+      case '2':
+        return <Transactions />
+      case '3':
+        return <AccountsPayable />
+      case '4':
+        return <AccountsReceivable />
+      default:
+        return null
+    }
+  }
 
   return (
     <>
@@ -66,9 +84,7 @@ function Home() {
             ]}
           />
         </Sider>
-        <Layout>
-          <GeneralVision />
-        </Layout>
+        <Layout>{renderContent()}</Layout>
       </Layout>
     </>
   )

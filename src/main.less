@@ -8,8 +8,9 @@
 .ant-input {
   border-radius: 30px;
   border: 2px solid #ccc;
-  padding: 5px;
+  padding: 0.6rem;
   font-size: 16px;
+  width: 100%;
 
   &:focus {
     border-color: #167f82;
@@ -23,6 +24,7 @@
   font-size: 16px;
   padding: 10px 20px;
   border: none;
+  width: 40%;
 
   &:active {
     background-color: #000;
@@ -50,4 +52,45 @@
   background-color: #52c4b0 !important;
   color: #fff !important;
   border-radius: 8px;
+}
+
+.ant-select-selector {
+  display: flex;
+  align-items: center;
+  border-radius: 30px !important;
+  border: 2px solid #ccc !important;
+  padding: 0.6rem !important;
+  font-size: 16px !important;
+  min-height: 47px;
+  transition: border-color 0.3s;
+  padding-right: 32px !important;
+}
+.ant-select-arrow {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  right: 16px; // ajuste se necessário
+}
+
+.ant-select-focused .ant-select-selector,
+.ant-select-selector:focus,
+.ant-select-selector:active {
+  border-color: #167f82 !important;
+  box-shadow: 0 0 0 2px rgba(0, 90, 173, 0.2) !important;
+}
+
+.ant-typography-title {
+  color: #167f82;
+  font-family: 'montserrat', sans-serif;
+  color: #167f82 !important;
+  font-weight: bold !important;
+  letter-spacing: 0.5px;
+  margin-bottom: 1rem;
+}
+
+.ant-typography {
+  margin-bottom: 0.5rem !important;
+  color: #167f82 !important;
+  font-family: 'montserrat', sans-serif;
+  font-weight: bold !important;
 }
