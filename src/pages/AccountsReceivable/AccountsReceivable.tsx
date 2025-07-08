@@ -84,11 +84,11 @@ function AccountsReceivable() {
             >
               <Select
                 options={[
-                  { label: 'Alimentação', value: 'food' },
-                  { label: 'Transporte', value: 'transport' },
-                  { label: 'Saúde', value: 'health' },
-                  { label: 'Educação', value: 'education' },
-                  { label: 'Outros', value: 'others' }
+                  { label: 'Alimentação', value: 'Alimentação' },
+                  { label: 'Transporte', value: 'Transporte' },
+                  { label: 'Saúde', value: 'Saúde' },
+                  { label: 'Educação', value: 'Educação' },
+                  { label: 'Outros', value: 'Outros' }
                 ]}
               />
             </Form.Item>
@@ -123,11 +123,11 @@ function AccountsReceivable() {
             >
               <Select
                 options={[
-                  { label: 'Cartão de Crédito', value: 'credit_card' },
-                  { label: 'Boleto', value: 'boleto' },
-                  { label: 'Transferência', value: 'transfer' },
-                  { label: 'Dinheiro', value: 'cash' },
-                  { label: 'Pix', value: 'pix' }
+                  { label: 'Cartão de Crédito', value: 'Cartão de Crédito' },
+                  { label: 'Boleto', value: 'Boleto' },
+                  { label: 'Transferência', value: 'Transferência' },
+                  { label: 'Dinheiro', value: 'Dinheiro' },
+                  { label: 'Pix', value: 'Pix' }
                 ]}
               />
             </Form.Item>
@@ -142,9 +142,9 @@ function AccountsReceivable() {
             >
               <Select
                 options={[
-                  { label: 'Pendente', value: 'pending' },
-                  { label: 'Pago', value: 'paid' },
-                  { label: 'Cancelado', value: 'canceled' }
+                  { label: 'Pendente', value: 'Pendente' },
+                  { label: 'Pago', value: 'Pago' },
+                  { label: 'Cancelado', value: 'Cancelado' }
                 ]}
               />
             </Form.Item>
