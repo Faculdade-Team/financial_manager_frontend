@@ -35,7 +35,7 @@ function Home() {
   const renderContent = () => {
     switch (selectedKeys[0]) {
       case '1':
-        return <GeneralVision />
+        return <GeneralVision setSelectedKeys={setSelectedKeys} />
       case '2':
         return <AccountsPayable />
       case '3':

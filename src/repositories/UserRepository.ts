@@ -9,6 +9,16 @@ export interface IDepositOrWithDraw {
   type: 'deposito' | 'saque'
 }
 
+export interface IPayment {
+  value: number
+  paymentId: number
+}
+
+export interface IReceive {
+  value: number
+  receivableId: number
+}
+
 class UserRepository extends Repository {
   async getUserByEmail(email: string) {
     return this.handle(() => this.api.get(`${this.path}/email/${email}`))
@@ -24,6 +34,14 @@ class UserRepository extends Repository {
 
   async withdraw(data: IDepositOrWithDraw) {
     return this.handle(() => this.api.patch(`${this.path}/withdraw`, data))
+  }
+
+  async payAccount(data: IPayment) {
+    return this.handle(() => this.api.patch(`${this.path}/payment`, data))
+  }
+
+  async receiveAccount(data: IReceive) {
+    return this.handle(() => this.api.patch(`${this.path}/receive`, data))
   }
 }
 

@@ -6,10 +6,12 @@ import { AccountsReceivableRepositoryImp } from '../../repositories/AccountsRece
 export interface IAccountsReceivable {
   description: string
   category: string
-  paymentDate: string
-  paymentMethod: string
+  receiptDate: string
+  formOfReceipt: string
   status: string
   observations: string
+  value: number
+  id?: number
 }
 
 function AccountsReceivable() {
@@ -36,7 +38,7 @@ function AccountsReceivable() {
         onFinish={handleSubmit}
       >
         <Row gutter={[16, 16]}>
-          <Col xs={24} sm={12} md={8} lg={12} xl={12}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={8}>
             <Form.Item
               label="Descrição"
               name="description"
@@ -47,7 +49,33 @@ function AccountsReceivable() {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={12} md={8} lg={12} xl={12}>
+          <Col xs={24} sm={8} md={8} lg={8} xl={8}>
+            <Form.Item
+              label="Valor"
+              name="value"
+              rules={[{ required: true, message: 'Valor é obrigatório' }]}
+              key={'value'}
+            >
+              <Input
+                type="text"
+                inputMode="decimal"
+                prefix="R$ "
+                placeholder="0,00"
+                maxLength={15}
+                className="accounts-payable__input-money"
+                onChange={e => {
+                  // Formata o valor para moeda brasileira
+                  let value = e.target.value.replace(/\D/g, '')
+                  value = (Number(value) / 100).toFixed(2) + ''
+                  value = value.replace('.', ',')
+                  value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+                  e.target.value = value
+                }}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} sm={12} md={8} lg={8} xl={8}>
             <Form.Item
               label="Categoria"
               name="category"

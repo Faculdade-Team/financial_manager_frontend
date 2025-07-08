@@ -4,12 +4,14 @@ import './AccountsPayable.less'
 import { AccountsPayableRepositoryImp } from '../../repositories/AccountsPayableRepository'
 
 export interface IAccountsPayable {
-  description: string
-  category: string
-  paymentDate: string
-  paymentMethod: string
-  status: string
-  observations: string
+  id?: number
+  description?: string
+  category?: string
+  paymentDate?: string
+  paymentMethod?: string
+  status?: string
+  observations?: string
+  value?: number
 }
 
 function AccountsPayable() {
@@ -37,7 +39,7 @@ function AccountsPayable() {
         onFinish={handleSubmit}
       >
         <Row gutter={[16, 16]}>
-          <Col xs={24} sm={12} md={8} lg={12} xl={12}>
+          <Col xs={24} sm={12} md={8} lg={8} xl={8}>
             <Form.Item
               label="Descrição"
               name="description"
@@ -48,7 +50,33 @@ function AccountsPayable() {
             </Form.Item>
           </Col>
 
-          <Col xs={24} sm={12} md={8} lg={12} xl={12}>
+          <Col xs={24} sm={8} md={8} lg={8} xl={8}>
+            <Form.Item
+              label="Valor"
+              name="value"
+              rules={[{ required: true, message: 'Valor é obrigatório' }]}
+              key={'value'}
+            >
+              <Input
+                type="text"
+                inputMode="decimal"
+                prefix="R$ "
+                placeholder="0,00"
+                maxLength={15}
+                className="accounts-payable__input-money"
+                onChange={e => {
+                  // Formata o valor para moeda brasileira
+                  let value = e.target.value.replace(/\D/g, '')
+                  value = (Number(value) / 100).toFixed(2) + ''
+                  value = value.replace('.', ',')
+                  value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.')
+                  e.target.value = value
+                }}
+              />
+            </Form.Item>
+          </Col>
+
+          <Col xs={24} sm={8} md={8} lg={8} xl={8}>
             <Form.Item
               label="Categoria"
               name="category"
@@ -57,11 +85,11 @@ function AccountsPayable() {
             >
               <Select
                 options={[
-                  { label: 'Alimentação', value: 'food' },
-                  { label: 'Transporte', value: 'transport' },
-                  { label: 'Saúde', value: 'health' },
-                  { label: 'Educação', value: 'education' },
-                  { label: 'Outros', value: 'others' }
+                  { label: 'Alimentação', value: 'Alimentação' },
+                  { label: 'Transporte', value: 'Transporte' },
+                  { label: 'Saúde', value: 'Saúde' },
+                  { label: 'Educação', value: 'Educação' },
+                  { label: 'Outros', value: 'Outros' }
                 ]}
               />
             </Form.Item>
@@ -91,11 +119,11 @@ function AccountsPayable() {
             >
               <Select
                 options={[
-                  { label: 'Cartão de Crédito', value: 'credit_card' },
-                  { label: 'Boleto', value: 'boleto' },
-                  { label: 'Transferência', value: 'transfer' },
-                  { label: 'Dinheiro', value: 'cash' },
-                  { label: 'Pix', value: 'pix' }
+                  { label: 'Cartão de Crédito', value: 'Cartão de Crédito' },
+                  { label: 'Boleto', value: 'Boleto' },
+                  { label: 'Transferência', value: 'Transferência' },
+                  { label: 'Dinheiro', value: 'Dinheiro' },
+                  { label: 'Pix', value: 'Pix' }
                 ]}
               />
             </Form.Item>
@@ -110,9 +138,9 @@ function AccountsPayable() {
             >
               <Select
                 options={[
-                  { label: 'Pendente', value: 'pending' },
-                  { label: 'Pago', value: 'paid' },
-                  { label: 'Cancelado', value: 'canceled' }
+                  { label: 'Pendente', value: 'Pendente' },
+                  { label: 'Pago', value: 'Pago' },
+                  { label: 'Cancelado', value: 'Cancelado' }
                 ]}
               />
             </Form.Item>
