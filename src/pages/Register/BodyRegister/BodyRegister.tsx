@@ -2,6 +2,7 @@ import { Button, Input, Form, Col, App } from 'antd'
 import './BodyRegister.less'
 import { UnauthUserRepositoryImp } from '../../../repositories/UserRepository'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export interface BodyRegisterProps {
   name: string
@@ -12,12 +13,14 @@ export interface BodyRegisterProps {
 function BodyRegister() {
   const { message } = App.useApp()
   const [loading, setLoading] = useState(false)
+  const navigator = useNavigate()
   const onSubmit = async (values: BodyRegisterProps) => {
     try {
       setLoading(true)
       const response = await UnauthUserRepositoryImp.createUser(values)
       console.log(response)
       message.success('Usuário criado com sucesso')
+      navigator('/')
     } catch (error) {
       // @ts-expect-error error object may not have 'error' property
       message.error(error.error.message || 'Erro ao criar usuário')

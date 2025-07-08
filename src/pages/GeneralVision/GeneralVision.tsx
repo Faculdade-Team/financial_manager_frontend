@@ -117,7 +117,7 @@ function GeneralVision() {
 
         <Col xs={24} sm={24} md={8} lg={8} xl={8}>
           <div className="container-cards__budget">
-            <h3 className="container-cards__budget--title">Contas a pagar</h3>
+            <h3 className="container-cards__budget--title">Contas a Receber</h3>
           </div>
         </Col>
       </Row>

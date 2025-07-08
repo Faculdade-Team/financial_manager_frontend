@@ -4,7 +4,7 @@ import HeaderHome from './Header/HeaderHome/HeaderHome'
 import { Layout, Menu } from 'antd'
 import {
   HomeOutlined,
-  SwapOutlined,
+  LogoutOutlined,
   CreditCardOutlined,
   WalletOutlined
 } from '@ant-design/icons'
@@ -12,9 +12,12 @@ import Sider from 'antd/es/layout/Sider'
 import GeneralVision from './GeneralVision/GeneralVision'
 import AccountsPayable from './AccountsPayable/AccountsPayable'
 import AccountsReceivable from './AccountsReceivable/AccountsReceivable'
-import Transactions from './Transactions/Transactions'
+import { useAuth } from '../Providers/AuthProvider'
+import { useNavigate } from 'react-router-dom'
 
 function Home() {
+  const auth = useAuth()
+  const navigate = useNavigate()
   const [selectedKeys, setSelectedKeys] = useState(['1'])
   useEffect(() => {
     const fetchData = async () => {
@@ -34,11 +37,11 @@ function Home() {
       case '1':
         return <GeneralVision />
       case '2':
-        return <Transactions />
-      case '3':
         return <AccountsPayable />
-      case '4':
+      case '3':
         return <AccountsReceivable />
+      case '4':
+        return null
       default:
         return null
     }
@@ -58,7 +61,14 @@ function Home() {
             mode="inline"
             defaultSelectedKeys={['1']}
             selectedKeys={selectedKeys}
-            onSelect={({ key }) => setSelectedKeys([key])}
+            onSelect={({ key }) => {
+              if (key === '4') {
+                auth?.logout()
+                navigate('/')
+              } else {
+                setSelectedKeys([key])
+              }
+            }}
             style={{ height: '100%', borderRight: 0, background: '#d6d6d6' }}
             items={[
               {
@@ -68,18 +78,18 @@ function Home() {
               },
               {
                 key: '2',
-                icon: <SwapOutlined />,
-                label: 'Transações'
-              },
-              {
-                key: '3',
                 icon: <CreditCardOutlined />,
                 label: 'Contas a pagar'
               },
               {
-                key: '4',
+                key: '3',
                 icon: <WalletOutlined />,
                 label: 'Contas a receber'
+              },
+              {
+                key: '4',
+                icon: <LogoutOutlined />,
+                label: 'Sair'
               }
             ]}
           />
